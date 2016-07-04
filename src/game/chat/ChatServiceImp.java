@@ -1,8 +1,9 @@
 package game.chat;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-
+import java.util.Map.Entry;
 /**
  * Created by Administrator on 2016/6/27.
  */
@@ -60,5 +61,16 @@ public class ChatServiceImp implements ChatService {
         }
         GroupEntry groupEntry = (GroupEntry) group;
         groupEntry.addMember(entry);
+    }
+
+    @Override
+    public void addGroup(long entry, Map<Long, String> groups) {
+        ChatEntry single = getChatEntryById(entry);
+        if (single == null) return;
+        if (groups != null) {
+            for (Entry<Long, String> groupEntry : groups.entrySet()) {
+                addGroup(entry, groupEntry.getKey(), groupEntry.getValue());
+            }
+        }
     }
 }
