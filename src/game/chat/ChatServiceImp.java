@@ -1,15 +1,24 @@
 package game.chat;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map.Entry;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 /**
  * Created by Administrator on 2016/6/27.
  */
 public class ChatServiceImp implements ChatService {
 
     private final ConcurrentHashMap<Long, ChatEntry> entryMap = new ConcurrentHashMap<Long, ChatEntry>();
+    private final List<ChatFilter> filters = new ArrayList<ChatFilter>();
+    private final ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    private final Lock readLock = readWriteLock.readLock();
+    private final Lock writeLock = readWriteLock.writeLock();
 
     @Override
     public void communicate(long speaker, long listener, String message) {
@@ -17,7 +26,23 @@ public class ChatServiceImp implements ChatService {
         if (speakerEntry == null) return;
         ChatEntry listenerEntry = getChatEntryById(listener);
         Dialogue dialogue = new SimpleDialogue(speaker, listener, message);
-        speakerEntry.speak(listenerEntry, dialogue);
+        try {
+            readLock.lock();
+            for (int i = 0; i < filters.size(); i++) {
+                ChatFilter filter = filters.get(i);
+                if (!filter.filter(dialogue)) {
+                    dialogue.setCallBackCase(filter.getCase());
+                    break;
+                }
+            }
+        } finally {
+            readLock.unlock();
+        }
+        if (dialogue.getCallBackCase() == CallBackCase.NORMAL) {
+            speakerEntry.speak(listenerEntry, dialogue);
+        } else {
+            speakerEntry.speakCallback(dialogue);
+        }
     }
 
     @Override
@@ -71,6 +96,16 @@ public class ChatServiceImp implements ChatService {
             for (Entry<Long, String> groupEntry : groups.entrySet()) {
                 addGroup(entry, groupEntry.getKey(), groupEntry.getValue());
             }
+        }
+    }
+
+    @Override
+    public void addFilter(ChatFilter filter) {
+        try {
+            writeLock.lock();
+            filters.add(filter);
+        } finally {
+            writeLock.unlock();
         }
     }
 }

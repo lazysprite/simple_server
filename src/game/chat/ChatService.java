@@ -16,4 +16,6 @@ public interface ChatService {
     void addGroup(long entry, long groupId, String groupName);
 
     void addGroup(long entry, Map<Long, String> groups);
+
+    void addFilter(ChatFilter filter);
 }
