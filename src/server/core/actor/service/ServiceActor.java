@@ -1,4 +1,4 @@
-package server.core.actor.player;
+package server.core.actor.service;
 
 import server.core.actor.AbstractActor;
 import server.core.actor.Actor;
@@ -6,14 +6,11 @@ import server.core.actor.ActorSystem;
 import server.core.actor.Message;
 
 /**
- * 个人业务的actor
  * Created by Administrator on 2016/10/26.
  */
-public class Player extends AbstractActor {
+public class ServiceActor extends AbstractActor {
 
-    private long id;
-
-    public Player(ActorSystem system) {
+    public ServiceActor(ActorSystem system) {
         super(system);
     }
 
@@ -24,15 +21,11 @@ public class Player extends AbstractActor {
 
     @Override
     public String getName() {
-        return String.valueOf(id);
+        return "service";
     }
 
     @Override
     public void onReceived(Message message, Actor sender) {
         message.exec(this);
-    }
-
-    public long id() {
-        return id;
     }
 }

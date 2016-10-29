@@ -126,7 +126,7 @@ public abstract class AbstractActor implements Actor {
                 try {
                     onReceived(mail.message, mail.sender);
                 } catch (Throwable e) {
-                    LogUtil.error("actor {} error while handling message.", getName());
+                    LogUtil.error("actor {} error while handling message.", getName(), e);
                 }
 
                 mailBox.poll();
