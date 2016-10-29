@@ -15,11 +15,6 @@ public class ResHelloWorld extends Packet {
         return null;
     }
 
-    @Override
-    public String toJsonString() {
-        return response;
-    }
-
     public String getResponse() {
         return response;
     }

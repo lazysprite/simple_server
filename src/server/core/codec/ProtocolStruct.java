@@ -11,8 +11,4 @@ public class ProtocolStruct extends Packet {
         return null;
     }
 
-    @Override
-    public String toJsonString() {
-        return "";
-    }
 }

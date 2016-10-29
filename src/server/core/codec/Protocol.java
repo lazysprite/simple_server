@@ -25,9 +25,4 @@ public interface Protocol {
      */
     void writeToBuff(ByteBuf msg);
 
-    /**
-     * 返回json格式
-     * @return
-     */
-    String toJsonString();
 }

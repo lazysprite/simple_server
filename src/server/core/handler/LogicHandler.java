@@ -7,6 +7,7 @@ import server.core.executor.LogicExecutor;
 import server.core.executor.Task;
 import server.core.log.ExceptionLog;
 import server.core.log.Log;
+import server.core.log.LogUtil;
 import server.core.session.ChannelSession;
 import server.core.session.ChannelSessionImp;
 import server.core.session.ChannelSessionManager;
@@ -40,7 +41,6 @@ public class LogicHandler extends SimpleChannelInboundHandler<Protocol> {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        Log log = new ExceptionLog(cause);
-        log.log();
+        LogUtil.error("",cause);
     }
 }

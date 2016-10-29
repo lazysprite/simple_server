@@ -37,10 +37,6 @@ public class ReqHelloWorld extends Packet {
         return HotSwapProxy.getInterface(ManagerInterface.class).handlerRequest(this);
     }
 
-    @Override
-    public String toJsonString() {
-        return helloWorld;
-    }
 
     public String getHelloWorld() {
         return helloWorld;
