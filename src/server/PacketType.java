@@ -1,8 +1,8 @@
 package server;
 
 import server.core.codec.Protocol;
-import server.test.ReqHelloWorld;
-import server.test.ResHelloWorld;
+import test.ReqHelloWorld;
+import test.ResHelloWorld;
 
 import java.util.concurrent.ConcurrentHashMap;
 

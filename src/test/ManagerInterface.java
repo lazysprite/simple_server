@@ -1,4 +1,4 @@
-package server.test;
+package test;
 
 import server.core.codec.Protocol;
 import server.core.hotswap.HotSwapInterface;

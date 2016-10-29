@@ -1,4 +1,4 @@
-package server.test;
+package test;
 
 import server.core.db.ConnectionPool;
 import server.core.db.DBBean;

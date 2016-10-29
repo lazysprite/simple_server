@@ -1,4 +1,4 @@
-package server.test;
+package test;
 
 import server.core.codec.ProtocolStruct;
 

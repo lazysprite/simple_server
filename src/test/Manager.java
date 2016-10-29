@@ -1,7 +1,6 @@
-package server.test;
+package test;
 
 import server.core.codec.Packet;
-import server.core.hotswap.HotSwapInterface;
 
 /**
  * Created by Administrator on 2016/6/5.

@@ -2,7 +2,7 @@ package test1;
 
 import server.core.codec.Packet;
 import server.core.codec.Protocol;
-import server.test.HelloStruct;
+import test.HelloStruct;
 
 public class Test {
 	private static long Length = 1000000000L;

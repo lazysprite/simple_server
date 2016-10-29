@@ -1,8 +1,8 @@
 package server;
 
 import server.core.hotswap.HotSwapInterface;
-import server.test.Manager;
-import server.test.ManagerInterface;
+import test.Manager;
+import test.ManagerInterface;
 
 /**
  * Created by Administrator on 2016/6/16.

@@ -13,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 import server.core.codec.FrameDecoder;
 import server.core.codec.PacketDecoder;
 import server.core.codec.PacketEncoder;
-import server.test.HelloStruct;
-import server.test.ReqHelloWorld;
+import test.HelloStruct;
+import test.ReqHelloWorld;
 
 public class Client02 {
 

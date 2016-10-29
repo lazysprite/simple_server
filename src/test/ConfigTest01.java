@@ -1,4 +1,4 @@
-package server.test;
+package test;
 
 import server.core.config.ConfigBean;
 import server.core.config.ConfigCache;
