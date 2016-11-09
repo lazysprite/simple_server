@@ -1,7 +1,7 @@
 package test;
 
-import server.core.codec.Packet;
-import server.core.codec.Protocol;
+import server.core.codec2.Packet;
+import server.core.codec2.Protocol;
 import server.core.session.ChannelSession;
 
 /**
@@ -13,6 +13,11 @@ public class ResHelloWorld extends Packet {
     @Override
     public Protocol executePacket(ChannelSession session) {
         return null;
+    }
+
+    @Override
+    public int getProtocol() {
+        return 0;
     }
 
     public String getResponse() {

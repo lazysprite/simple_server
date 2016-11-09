@@ -1,6 +1,6 @@
 package server.core.executor;
 
-import server.core.codec.Protocol;
+import server.core.codec2.Protocol;
 import server.core.session.ChannelSession;
 import server.core.session.ChannelSessionManager;
 

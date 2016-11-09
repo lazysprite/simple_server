@@ -1,7 +1,9 @@
 package server;
 
+import com.google.common.base.Ascii;
 import com.google.common.base.Preconditions;
 import server.core.log.LogUtil;
+import server.mutiserver.MutiConstant;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -36,6 +38,14 @@ public class ServerConfig {
      */
     public static int EXECUTORSIZE = Runtime.getRuntime().availableProcessors() * 2;
 
+    public static int bossGroup() {
+        return 1;
+    }
+
+    public static int workerGroup() {
+        return 10;
+    }
+
     public static class CodecConfig {
         /**
          * 协议头部
@@ -55,4 +65,11 @@ public class ServerConfig {
         return Integer.valueOf(Preconditions.checkNotNull(properties.get("server.port")));
     }
 
+    public static String getServerType() {
+        return Preconditions.checkNotNull(properties.get("server.type"));
+    }
+
+    public static boolean isMaster() {
+        return Ascii.equalsIgnoreCase(MutiConstant.MASTER, getServerType());
+    }
 }

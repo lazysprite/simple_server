@@ -1,6 +1,6 @@
 package server.core.session;
 
-import server.core.codec.Protocol;
+import server.core.codec2.Protocol;
 
 /**
  * Created by Administrator on 2016/5/21.

@@ -1,13 +1,12 @@
-package server.core.handler;
+package server.core.codec;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import server.core.codec.Protocol;
+import server.core.codec2.Protocol;
 import server.core.executor.LogicExecutor;
 import server.core.executor.Task;
 import server.core.log.LogUtil;
 import server.core.session.ChannelSession;
-import server.core.session.ChannelSessionImp;
 import server.core.session.ChannelSessionManager;
 
 /**
@@ -25,9 +24,7 @@ public class LogicHandler extends SimpleChannelInboundHandler<Protocol> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        super.channelActive(ctx);
-        ChannelSession session = new ChannelSessionImp(ctx.channel(), IDGenerator.SESSION.generateId());
-        ChannelSessionManager.getInstance().registerSession(session);
+
     }
 
     @Override

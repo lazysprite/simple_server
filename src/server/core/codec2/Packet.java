@@ -1,7 +1,6 @@
-package server.core.codec;
+package server.core.codec2;
 
 import io.netty.buffer.ByteBuf;
-import server.PacketType;
 import server.core.session.ChannelSession;
 
 import java.io.UnsupportedEncodingException;
@@ -327,33 +326,5 @@ public abstract class Packet implements Protocol {
         return Arrays.asList(fieldList);
     }
 
-    /**
-     *  读包
-     * @param buf
-     * @return
-     */
-    public static Protocol readProtocol(ByteBuf buf) {
-        if (buf.readableBytes() < 4) {
-            // TODO LOG
-            return null;
-        }
-        Protocol request = PacketType.createPacket(buf.readInt());
-        if (request != null) request.readFromBuff(buf);
-        return request;
-    }
 
-    /**
-     * 写包
-     * @param response
-     * @param tmp
-     */
-    public static void writeProtocol(Protocol response, ByteBuf tmp) {
-        PacketType type = PacketType.createPacketType(response.getClass());
-        if (type == null) {
-            // TODO LOG
-            return;
-        }
-        tmp.writeInt(type.getProtocol());
-        response.writeToBuff(tmp);
-    }
 }

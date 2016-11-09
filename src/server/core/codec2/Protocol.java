@@ -1,4 +1,4 @@
-package server.core.codec;
+package server.core.codec2;
 
 import io.netty.buffer.ByteBuf;
 import server.core.session.ChannelSession;
@@ -24,5 +24,11 @@ public interface Protocol {
      * @param msg
      */
     void writeToBuff(ByteBuf msg);
+
+    /**
+     * 获取协议号
+     * @return
+     */
+    int getProtocol();
 
 }

@@ -2,7 +2,7 @@ package client;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import server.core.codec.Protocol;
+import server.core.codec2.Protocol;
 
 public class ClientHandler extends SimpleChannelInboundHandler<Protocol> {
 

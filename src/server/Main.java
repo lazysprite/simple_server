@@ -2,6 +2,8 @@ package server;
 
 import server.core.log.LogUtil;
 import server.core.net.NetBootstrap;
+import server.core.server.Server;
+import server.mutiserver.AbstractServer;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,7 +11,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		ServerConfig.init();
-		NetBootstrap net = new NetBootstrap();
+		Server server = AbstractServer.newServer(ServerConfig.getServerType());
+		NetBootstrap net = new NetBootstrap(server);
 		net.bootstrap();
 		int wait = 3;
 		while (!net.bootstrapSuccess()) {
