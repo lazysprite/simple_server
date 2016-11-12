@@ -1,7 +1,6 @@
 package server.core.codec2;
 
 import io.netty.buffer.ByteBuf;
-import server.core.session.ChannelSession;
 
 /**
  * Created by Administrator on 2016/5/8.
@@ -11,7 +10,7 @@ public interface Protocol {
      * 请求报的逻辑处理
      * @return
      */
-    Protocol executePacket(ChannelSession session);
+    Protocol executePacket();
 
     /**
      * 从ByteBuf中获取包的信息

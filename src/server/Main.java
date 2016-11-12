@@ -14,6 +14,11 @@ public class Main {
 		Server server = AbstractServer.newServer(ServerConfig.getServerType());
 		NetBootstrap net = new NetBootstrap(server);
 		net.bootstrap();
+		waitForNetworkBootstrap(net);
+		LogUtil.info("net started.");
+	}
+
+	private static void waitForNetworkBootstrap(NetBootstrap net) {
 		int wait = 3;
 		while (!net.bootstrapSuccess()) {
 			LogUtil.info("waiting for net bootstrap.");
@@ -27,7 +32,6 @@ public class Main {
 				System.exit(-1);
 			}
 		}
-		LogUtil.info("net started.");
 	}
 	
 }

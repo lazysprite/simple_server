@@ -10,4 +10,6 @@ public interface Server {
 
     ChannelInitializer<NioSocketChannel> getChannelInitializer();
 
+    void init();
+
 }

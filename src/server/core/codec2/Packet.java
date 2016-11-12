@@ -1,7 +1,6 @@
 package server.core.codec2;
 
 import io.netty.buffer.ByteBuf;
-import server.core.session.ChannelSession;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.*;
@@ -13,7 +12,7 @@ import java.util.*;
 public abstract class Packet implements Protocol {
 
     @Override
-    public abstract Protocol executePacket(ChannelSession session);
+    public abstract Protocol executePacket();
 
     @Override
     public void readFromBuff(ByteBuf buf) {

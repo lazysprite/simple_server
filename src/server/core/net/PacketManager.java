@@ -1,6 +1,7 @@
-package server.core.codec2;
+package server.core.net;
 
 import com.google.common.base.Preconditions;
+import server.core.codec2.Packet;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
